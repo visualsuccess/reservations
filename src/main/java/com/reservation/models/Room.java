@@ -1,6 +1,7 @@
 package com.reservation.models;
 
 public class Room{
+	
 	private int roomNumber;
 	private String typeId;
 	private boolean available;
