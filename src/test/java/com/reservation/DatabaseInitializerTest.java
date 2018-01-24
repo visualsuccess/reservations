@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -28,7 +29,8 @@ public class DatabaseInitializerTest {
 	@Test
 	public void testInit() throws Exception {
 		
-		//Mockito.when(roomTypeRepository.save(Mockito.isA(RoomType.class)));
+		Mockito.when(roomTypeRepository.save(Mockito.isA(RoomType.class))).thenReturn(new RoomType());
+		//Mockito.doNothing().when(roomTypeRepository).save(Mockito.isA(RoomType.class));
 		
 		databaseInitializer.initRoomTypes();
 
