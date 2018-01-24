@@ -1,18 +1,13 @@
 package com.reservation;
 
-import java.math.BigDecimal;
+import static org.mockito.Mockito.times;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.reservation.models.RoomType;
 import com.reservation.repository.RoomTypeRepository;
@@ -27,14 +22,13 @@ public class DatabaseInitializerTest {
 	private DatabaseInitializer databaseInitializer;
 	
 	@Test
-	public void testInit() throws Exception {
+	public void testInitData() throws Exception {
 		
 		Mockito.when(roomTypeRepository.save(Mockito.isA(RoomType.class))).thenReturn(new RoomType());
-		//Mockito.doNothing().when(roomTypeRepository).save(Mockito.isA(RoomType.class));
 		
-		databaseInitializer.initRoomTypes();
+		databaseInitializer.initData();
 
-		//Mockito.verify(roomTypeRepository.save(Mockito.isA(RoomType.class)));
+		Mockito.verify(roomTypeRepository, times(3)).save(Mockito.isA(RoomType.class));
 	}
 
 }
