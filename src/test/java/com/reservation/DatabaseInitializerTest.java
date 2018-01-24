@@ -1,32 +1,38 @@
 package com.reservation;
 
-import static org.junit.Assert.assertTrue;
+import java.math.BigDecimal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
+import com.reservation.models.RoomType;
+import com.reservation.repository.RoomTypeRepository;
+
+@RunWith(MockitoJUnitRunner.class)
 public class DatabaseInitializerTest {
-	
-	@Autowired
-	private DatabaseInitializer databaseInit;
-	
-    @Autowired
-    private TestEntityManager entityManager;
+
+	@Mock
+	private RoomTypeRepository roomTypeRepository;
+
+	@InjectMocks
+	private DatabaseInitializer databaseInitializer;
 	
 	@Test
 	public void testInit() throws Exception {
-		//entityManager.persist( new RoomType(99, "JUnit", new BigDecimal(99)));
-		databaseInit.innitRoomTypes();
 		
-		assertTrue(true);
-		//RoomType rt = entityManager.find(RoomType.class, 99);
-		//Assert.assertNotNull(rt);
+		//Mockito.when(roomTypeRepository.save(Mockito.isA(RoomType.class)));
+		
+		databaseInitializer.initRoomTypes();
+
+		//Mockito.verify(roomTypeRepository.save(Mockito.isA(RoomType.class)));
 	}
 
 }

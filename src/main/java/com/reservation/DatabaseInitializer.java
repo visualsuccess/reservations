@@ -17,7 +17,7 @@ public class DatabaseInitializer {
 	private RoomTypeRepository roomTypeRepository;
 
 	@PostConstruct
-	public void innitRoomTypes() {
+	public void initRoomTypes() {
 		roomTypeRepository.save(new RoomType(1, "Test", new BigDecimal(100)));
 	}
 
