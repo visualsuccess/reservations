@@ -9,7 +9,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.reservation.models.Room;
 import com.reservation.models.RoomType;
+import com.reservation.repository.RoomRepository;
 import com.reservation.repository.RoomTypeRepository;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -17,6 +19,9 @@ public class DatabaseInitializerTest {
 
 	@Mock
 	private RoomTypeRepository roomTypeRepository;
+	
+	@Mock
+	private RoomRepository roomRepository;
 
 	@InjectMocks
 	private DatabaseInitializer databaseInitializer;
@@ -25,10 +30,14 @@ public class DatabaseInitializerTest {
 	public void testInitData() throws Exception {
 		
 		Mockito.when(roomTypeRepository.save(Mockito.isA(RoomType.class))).thenReturn(new RoomType());
+		Mockito.when(roomRepository.save(Mockito.isA(Room.class))).thenReturn(new Room());
 		
 		databaseInitializer.initData();
 
 		Mockito.verify(roomTypeRepository, times(3)).save(Mockito.isA(RoomType.class));
+		Mockito.verify(roomRepository, times(20)).save(Mockito.isA(Room.class));
+		
+		
 	}
 
 }
