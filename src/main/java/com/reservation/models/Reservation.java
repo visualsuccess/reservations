@@ -2,13 +2,34 @@ package com.reservation.models;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Reservation")
 public class Reservation {
+	 @Id @GeneratedValue long confirmationNumber;
+	
 	private int roomId;
 	private Date checkinDate;
 	private Date checkoutDate;
-	private int confirmationNumber;
+	
 	private int cardId;
 	
+	public Reservation(){
+		
+	}
+	
+    public Reservation(int roomId,Date checkinDate,Date checkoutDate,int cardId){
+    	this.roomId=roomId;
+    	this.checkinDate=checkinDate;
+    	this.checkoutDate=checkoutDate;
+    	this.cardId=cardId;
+		
+	}
 	
 	public int getRoomId() {
 		return roomId;
@@ -29,7 +50,7 @@ public class Reservation {
 		this.checkoutDate = checkoutDate;
 	}
 	public int getConfirmationNumber() {
-		return confirmationNumber;
+		return (int) confirmationNumber;
 	}
 	public void setConfirmationNumber(int confirmationNumber) {
 		this.confirmationNumber = confirmationNumber;
@@ -42,4 +63,3 @@ public class Reservation {
 	}
 
 }
-
