@@ -1,6 +1,7 @@
 package com.reservation.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reservation.models.RoomType;
@@ -12,6 +13,7 @@ public class RoomTypeController {
 	@Autowired
 	private RoomTypeRepository roomTypeRepository;
 	
+	@GetMapping("/retrieveRoomTypes")
 	public Iterable<RoomType> retrieveRoomTypes(){
 		return roomTypeRepository.findAll();
 	}
