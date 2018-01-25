@@ -15,8 +15,8 @@ import com.reservation.models.RoomType;
 @RepositoryRestResource
 public interface RoomTypeRepository extends CrudRepository<RoomType, Integer>{
 	
-	@Query("SELECT rt FROM RoomType rt ") //WHERE rt.typeId = 1
-	public Iterable<RoomType> findAvaliableRooms (); //Date checkInDate, Date checkOutDate
-	
+	@Query("SELECT rt FROM RoomType rt JOIN r Reservation WHERE r.checkInDate = ") //WHERE rt.typeId = 1
+	public Iterable<RoomType> findAvaliableRooms (Date checkInDate, Date checkOutDate); //Date checkInDate, Date checkOutDate
+	//TODO: reservation table needs to be initialized in DatabaseInitializer.java
 	
 }
