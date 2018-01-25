@@ -16,9 +16,7 @@ import com.reservation.repository.RoomTypeRepository;
 
 @Component
 public class DatabaseInitializer {
-
 	private static final Log LOGGER = LogFactory.getLog(DatabaseInitializer.class);
-	
 	@Autowired
 	private RoomTypeRepository roomTypeRepository;
 	@Autowired
@@ -27,8 +25,7 @@ public class DatabaseInitializer {
 	@PostConstruct
 	public void initData() {
 		initRoomTypes();
-		initRooms();
-		
+		initRooms();	
 
 	}
 
@@ -36,7 +33,6 @@ public class DatabaseInitializer {
 		roomTypeRepository.save(new RoomType(1, "Standard", new BigDecimal(100.00)));
 		roomTypeRepository.save(new RoomType(2, "Family", new BigDecimal(150.00)));
 		roomTypeRepository.save(new RoomType(3, "Suite", new BigDecimal(200.00)));
-		
 		LOGGER.info("Created RoomTypes: " + roomTypeRepository.count());
 		System.out.println("Created RoomTypes: " + roomTypeRepository.count());
 	}
@@ -50,10 +46,8 @@ public class DatabaseInitializer {
 		}
 		for(;i<21;i++){
 			roomRepository.save(new Room(i,"3" ,true));
-		}
-		
-		
-		
+		}	
+			
 		LOGGER.info("Created Room: " + roomRepository.count());
 		System.out.println("Created Room: " + roomRepository.count());
 	}
