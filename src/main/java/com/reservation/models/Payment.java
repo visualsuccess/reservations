@@ -1,22 +1,40 @@
 package com.reservation.models;
 
-public class CardInfo {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private int confirmationNumber;
+@Entity
+@Table(name = "Payment")
+public class Payment {
+
+	@Id @GeneratedValue long guestId;
+	//private int confirmationNumber;
 	private String nameOnCard;
 	private String cardNumber;
 	private String zipCode;
 	private int expirationMonth;
 	private int expirationYear;
 	
+	public Payment(String nameOnCard,String cardNumber, String zipCode,int expirationMonth,int expirationYear){
+		this.nameOnCard = nameOnCard;
+		this.cardNumber = cardNumber;
+		this.zipCode = zipCode;
+		this.expirationMonth = expirationMonth;
+		this.expirationYear = expirationYear;
+	}
 	
+	public Payment(){
+		
+	}
 
-	public int getConfirmationNumber() {
+	/*public int getConfirmationNumber() {
 		return confirmationNumber;
 	}
 	public void setConfirmationNumber(int confirmationNumber) {
 		this.confirmationNumber = confirmationNumber;
-	}
+	}*/
 	public String getNameOnCard() {
 		return nameOnCard;
 	}
