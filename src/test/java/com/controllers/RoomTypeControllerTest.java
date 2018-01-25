@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,8 +24,12 @@ public class RoomTypeControllerTest {
 	
 	@Test
 	public void testRetrieveRoomTypes() throws Exception {
-		Iterable<RoomType> rts = roomTypeController.retrieveRoomTypes();
-		Assert.assertEquals("foo",rts.iterator().next().getStyle());
+		Iterable<RoomType> mockRoomTypes = Mockito.mock(Iterable.class);
+		Mockito.when(roomTypeRepository.findAll()).thenReturn(mockRoomTypes);
+		
+		Iterable<RoomType> actual = roomTypeController.retrieveRoomTypes();
+		
+		Assert.assertEquals(mockRoomTypes ,actual);
 	}
 
 }
