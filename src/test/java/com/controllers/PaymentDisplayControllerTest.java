@@ -8,7 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.reservation.controllers.PaymentDisplayController;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PaymentControllerTest {
+public class PaymentDisplayControllerTest {
 	@InjectMocks
 	private PaymentDisplayController paymentDisplayController;
 	
