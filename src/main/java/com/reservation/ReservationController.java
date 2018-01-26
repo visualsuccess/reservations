@@ -10,4 +10,9 @@ public class ReservationController {
 	public String home() {
 		return "index";
 	}
+	
+	@RequestMapping(value = "/availableRooms")
+	public String availableRooms() {
+		return "availableRooms";
+	}
 }
