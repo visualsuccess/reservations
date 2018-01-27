@@ -25,9 +25,10 @@ public class RoomTypeRepositoryIntTest {
 		Date checkInDate = new Date(); 
 		Date checkOutDate = new Date(); 
 		
-		Iterable<RoomType>  roomTypes =  roomTypeRepository.findAvaliableRooms(checkInDate, checkOutDate); //checkInDate, checkOutDate
+		Iterable<RoomType>  roomTypes =  roomTypeRepository.findAvaliableRooms(); //checkInDate, checkOutDate); //checkInDate, checkOutDate
 		
 		Assert.assertNotNull(roomTypes);
+		Assert.assertEquals(1, roomTypes.iterator().next().getTypeId());
 		
 	}
 }
